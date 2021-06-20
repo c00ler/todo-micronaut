@@ -15,6 +15,18 @@ public class TodoEntity {
 
     private boolean completed = false;
 
+    public TodoEntity() {
+    }
+
+    public TodoEntity(String title) {
+        this(title, false);
+    }
+
+    public TodoEntity(String title, boolean completed) {
+        this.title = title;
+        this.completed = completed;
+    }
+
     public Long getId() {
         return id;
     }
