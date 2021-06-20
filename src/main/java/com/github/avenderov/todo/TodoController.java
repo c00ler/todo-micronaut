@@ -1,6 +1,5 @@
 package com.github.avenderov.todo;
 
-import io.micronaut.data.model.Sort;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
@@ -11,6 +10,8 @@ import io.micronaut.http.annotation.Put;
 import io.micronaut.scheduling.TaskExecutors;
 import io.micronaut.scheduling.annotation.ExecuteOn;
 import jakarta.inject.Inject;
+
+import java.util.List;
 
 @ExecuteOn(TaskExecutors.IO)
 @Controller("/todo")
@@ -24,8 +25,8 @@ public class TodoController {
     }
 
     @Get
-    public Iterable<TodoEntity> findAll() {
-        return todoRepository.findAll(Sort.of(Sort.Order.desc("id")));
+    public List<TodoEntity> findAll() {
+        return todoRepository.findAll(TodoRepository.ORDER_BY_ID_DESC);
     }
 
     @Get("/{id}")
