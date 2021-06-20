@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @MicronautTest
-class TodoMicronautTest {
+class ApplicationTest {
 
     @Inject
     EmbeddedApplication<?> application;
