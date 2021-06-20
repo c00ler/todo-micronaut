@@ -21,19 +21,10 @@ public class StartupEventListener implements ApplicationEventListener<StartupEve
 
     @Override
     public void onApplicationEvent(StartupEvent event) {
-        cleanup();
-        populate();
-    }
+        LOG.info("Delete all");
+        todoRepository.deleteAll();
 
-    private void cleanup() {
-        LOG.info("Cleaning up database.");
-        todoRepository.findAll().forEach(todoRepository::delete);
-    }
-
-    private void populate() {
-        final var completed = new TodoEntity("Completed todo", /* completed= */ true);
-
-        todoRepository.save(completed);
-        LOG.info("Added todo entry");
+        LOG.info("Setup data");
+        todoRepository.setupData();
     }
 }

@@ -19,4 +19,10 @@ public interface TodoRepository extends PageableRepository<TodoEntity, Long> {
     @NonNull
     @Override
     List<TodoEntity> findAll(@NonNull Sort sort);
+
+    default void setupData() {
+        final var completed = new TodoEntity("Completed todo", /* completed= */ true);
+
+        save(completed);
+    }
 }
